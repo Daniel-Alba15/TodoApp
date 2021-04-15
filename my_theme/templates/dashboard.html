@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Dashboard</title>
+{% endblock head %}
+
+{% block content %}
+    <p>Hola!</p>
+    <a href="{% url 'users:logout' %}">Logout</a>
+{% endblock content %}
