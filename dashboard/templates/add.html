@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Add ToDo</title>
+{% endblock head %}
+
+{% block content %}
+    <form class="flex flex-col justify-center w-11/12 mx-auto mt-6" action="{% url 'dashboard:add' %}" method="POST">{% csrf_token %}
+        <input type="hidden" value="{{ user }}" name="user_id">
+        <input class="mb-3" name="title" type="text" maxlength="100" placeholder="title" required>
+        <textarea name="description"  cols="30" rows="10" placeholder="description"></textarea>
+        <button class="bg-gray-600 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md" type="submit">Submit</button>
+    </form>
+{% endblock content %}

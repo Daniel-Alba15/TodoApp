@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Dashboard</title>
+{% endblock head %}
+
+{% block content %}
+{% load tz %}
+
+<a href="{% url 'users:logout' %}">Logout</a>
+
+<a class="bg-gray-500 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md w-11/12" href="{% url 'dashboard:add' %}">Add new ToDo</a>
+
+<!-- <div class="flex flex-wrap flex-col"> -->
+{% if todos %}
+    {% for todo in todos %}
+    <div class="flex">
+        <p class="flex-1 mb-5">{{ todo.title }}</p>
+        <p class="flex-1">{{ todo.description }}</p>
+        <p class="flex-1">{{ todo.is_done }}</p>
+        <p class="flex-1">{{ todo.created|timezone:"America/Bogota" }}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
+{% endblock content %}

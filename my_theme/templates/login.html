@@ -6,7 +6,7 @@
 
 
 {% block content %}
-<div class="fondo flex justify-center items-center w-full h-screen">
+<div class="fondo bg-red-800 flex justify-center items-center w-full h-screen">
     <form class=" p-10 w-11/12 sm:w-5/12" action="{% url 'users:login' %}" method="POST">{% csrf_token %}
         <input class="block mx-auto w-11/12 rounded" type="email" name="email" placeholder="email">
         <input class="block mx-auto w-11/12 my-2 rounded" type="password" name="password" placeholder="password">
