@@ -11,6 +11,7 @@ def signup_view(request):
 
         if form.is_valid():
             form.save()
+            return redirect('users:login')
 
     return render(request, 'signup.html', {'form': form})
 
@@ -22,7 +23,6 @@ def login_view(request):
 
         user = authenticate(request, email=email, password=password)
 
-        print(user)
         if user:
             login(request, user)
 
