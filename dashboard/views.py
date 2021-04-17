@@ -12,6 +12,7 @@ def dashboard(request):
 
     return render(request, 'dashboard.html', context)
 
+
 @login_required
 def add_todo(request):
     form = TodoForm()
@@ -25,3 +26,39 @@ def add_todo(request):
             return redirect('dashboard:dashboard')
 
     return render(request, 'add.html', {'user': request.user.id})
+
+
+@login_required
+def delete_todo(request, id):
+    todo = Todos.objects.get(id=id)
+
+    if request.method == 'POST':
+        todo.delete()
+
+        return redirect('dashboard:dashboard')
+
+    return render(request, 'delete.html', {'todo': todo})
+
+
+@login_required
+def edit_todo(request, id):
+    form = TodoForm()
+    todo = Todos.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = TodoForm(request.POST)
+
+        if form.is_valid():
+            print(form.cleaned_data)
+            todo.title = form.cleaned_data['title']
+            todo.description = form.cleaned_data['description']
+            todo.save()
+
+            return redirect('dashboard:dashboard')
+
+    context = {
+        'todo': todo,
+        'user': request.user.id,
+    }
+
+    return render(request, 'edit.html', context)

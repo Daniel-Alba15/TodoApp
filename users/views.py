@@ -4,6 +4,9 @@ from .forms import UserForm
 
 
 def signup_view(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard:dashboard')
+
     form = UserForm()
 
     if request.method == 'POST':
@@ -17,6 +20,9 @@ def signup_view(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard:dashboard')
+
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']

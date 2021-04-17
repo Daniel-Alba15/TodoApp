@@ -8,19 +8,20 @@
 {% load tz %}
 
 <a href="{% url 'users:logout' %}">Logout</a>
+{% load static %}
+<a class="text-white block mx-auto p-3 mt-6 rounded-md w-11/12" href="{% url 'dashboard:add' %}"><img src="{% static 'images/plus-square.svg' %}" alt=""></a>
 
-<a class="bg-gray-500 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md w-11/12" href="{% url 'dashboard:add' %}">Add new ToDo</a>
 
-<!-- <div class="flex flex-wrap flex-col"> -->
 {% if todos %}
     {% for todo in todos %}
-    <div class="flex">
-        <p class="flex-1 mb-5">{{ todo.title }}</p>
+    <div class="flex w-11/12 mx-auto justify-center items-center mb-5">
+        <p class="flex-1">{{ todo.title }}</p>
         <p class="flex-1">{{ todo.description }}</p>
         <p class="flex-1">{{ todo.is_done }}</p>
-        <p class="flex-1">{{ todo.created|timezone:"America/Bogota" }}</p>
+        <p class="flex-1">{{ todo.modified|timezone:"America/Bogota" }}</p>
+        <a href="{% url 'dashboard:edit' todo.id %}"><img class="mr-2" src="{% static 'images/edit.svg' %}" alt="Edit Todo"></a>
+        <a href="{% url 'dashboard:delete' todo.id %}"><img src="{% static 'images/trash.svg' %}" alt="Delete Todo"></a>
     </div>
     {% endfor %}
 {% endif %}
-</div>
 {% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Delete ToDo</title>
+{% endblock head %}
+
+{% block content %}
+    <form action="{% url 'dashboard:delete' todo.id %}" method="POST">{% csrf_token %}
+        <p>Do you want to delet this ToDo?</p>
+        <p>{{ todo.title }}</p>
+        <p>{{ todo.description }}</p>
+        <p>{{ todo.created }}</p>
+        <button type="submit">Delete</button>
+    </form>
+{% endblock content %}
