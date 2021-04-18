@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login</title>
+{% endblock head %}
+
+
+{% block content %}
+<div class="fondo bg-red-800 flex justify-center items-center w-full h-screen">
+    <form class=" p-10 w-11/12 sm:w-5/12" action="{% url 'users:login' %}" method="POST">{% csrf_token %}
+        <input class="block mx-auto w-11/12 rounded" type="email" name="email" placeholder="email">
+        <input class="block mx-auto w-11/12 my-2 rounded" type="password" name="password" placeholder="password">
+        <button class="bg-gray-600 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md" type="submit">Login</button>
+        <span class="block mx-auto mt-2 text-center text-white">Do not have an account? <a class="text-blue-700 hover:text-blue-900" href="{% url 'users:signup' %}">Sign up</a></span>
+    </form>
+</div>
+{% endblock content %}

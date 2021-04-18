@@ -19,6 +19,9 @@ module.exports = {
       flex: {
         2: "0 1 500px",
       },
+      screens: {
+        big: "964px",
+      },
     },
   },
   variants: {

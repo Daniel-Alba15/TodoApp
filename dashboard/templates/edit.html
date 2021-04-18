@@ -13,7 +13,17 @@
     {% else %}
         <textarea name="description" cols="30" rows="10" placeholder="description"></textarea>
     {% endif %}
-    <button class="bg-gray-600 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md"
-        type="submit">Submit</button>
+    <div>
+        <label for="is_done">Is done?</label>
+            {% if not todo.is_done %}
+                <input type="checkbox" id="is_done" name="is_done">
+            {% else %}
+                <input type="checkbox" id="is_done" name="is_done" checked>
+            {% endif %}
+    </div>
+    <div class="mx-auto">
+        <button class="bg-green-600 hover:bg-gray-800 text-white  mx-auto p-3 mt-6 rounded-md" type="submit">Submit</button>
+        <a class="inline-block bg-red-600 hover:bg-gray-800 text-white p-3 mt-6 rounded-md mx-auto" href="{% url 'dashboard:dashboard' %}">Cancel</a>
+    </div>
 </form>
 {% endblock content %}

@@ -8,6 +8,7 @@ class TodoForm(forms.Form):
     title = forms.CharField(max_length=100)
     description = forms.CharField(max_length=500, required=False)
     user_id = forms.CharField(max_length=100)
+    is_done = forms.BooleanField(initial=False, required=False)
 
     def save(self):
         data = self.cleaned_data

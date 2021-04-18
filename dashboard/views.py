@@ -20,6 +20,7 @@ def add_todo(request):
     if request.method == 'POST':
         form = TodoForm(request.POST)
 
+        print(form.errors)
         if form.is_valid():
             form.save()
 
@@ -49,9 +50,10 @@ def edit_todo(request, id):
         form = TodoForm(request.POST)
 
         if form.is_valid():
-            print(form.cleaned_data)
-            todo.title = form.cleaned_data['title']
-            todo.description = form.cleaned_data['description']
+            data = form.cleaned_data
+            todo.title = data['title']
+            todo.description = data['description']
+            todo.is_done = data['is_done']
             todo.save()
 
             return redirect('dashboard:dashboard')

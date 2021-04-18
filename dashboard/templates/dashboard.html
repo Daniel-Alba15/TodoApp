@@ -7,20 +7,30 @@
 {% block content %}
 {% load tz %}
 
-<a href="{% url 'users:logout' %}">Logout</a>
+{% include 'navbar.html' %}
 {% load static %}
-<a class="text-white block mx-auto p-3 mt-6 rounded-md w-11/12" href="{% url 'dashboard:add' %}"><img src="{% static 'images/plus-square.svg' %}" alt=""></a>
 
+<div class="bg-gray-200 right-5 bottom-5 fixed rounded-full">
+    <a class="block p-3 rounded-md" href="{% url 'dashboard:add' %}"><img class="w-10" src="{% static 'images/plus-square.svg' %}" alt=""></a>
+</div>
 
 {% if todos %}
     {% for todo in todos %}
-    <div class="flex w-11/12 mx-auto justify-center items-center mb-5">
+    {% if todo.is_done %}
+        <div class="bg-green-700 flex flex-wrap sm:flex-nowrap w-11/12 mx-auto justify-between items-center mb-5 p-3 text-white">
+    {% else %}
+        <div class="bg-red-700 flex flex-wrap sm:flex-nowrap w-11/12 mx-auto justify-between items-center mb-5 p-3 text-white">
+    {% endif %}
         <p class="flex-1">{{ todo.title }}</p>
         <p class="flex-1">{{ todo.description }}</p>
-        <p class="flex-1">{{ todo.is_done }}</p>
+        {% if todo.is_done %}
+        <p class="flex-1">Done<input type="checkbox" checked></p>
+        {% endif %}
         <p class="flex-1">{{ todo.modified|timezone:"America/Bogota" }}</p>
-        <a href="{% url 'dashboard:edit' todo.id %}"><img class="mr-2" src="{% static 'images/edit.svg' %}" alt="Edit Todo"></a>
-        <a href="{% url 'dashboard:delete' todo.id %}"><img src="{% static 'images/trash.svg' %}" alt="Delete Todo"></a>
+        <div class="flex justify-between w-full sm:w-auto">
+            <a href="{% url 'dashboard:edit' todo.id %}"><img class="sm:w-12 grande:w-8 big:bg-gray-700 mr-2" src="{% static 'images/edit.svg' %}" alt="Edit Todo"></a>
+            <a href="{% url 'dashboard:delete' todo.id %}"><img class="sm:w-12" src="{% static 'images/trash.svg' %}" alt="Delete Todo"></a>
+        </div>
     </div>
     {% endfor %}
 {% endif %}
