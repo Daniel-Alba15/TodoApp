@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Todos
 from .forms import TodoForm
 
@@ -44,7 +44,8 @@ def delete_todo(request, id):
 @login_required
 def edit_todo(request, id):
     form = TodoForm()
-    todo = Todos.objects.get(id=id)
+    # todo = Todos.objects.get(id=id, user_id=request.user.id)
+    todo = get_object_or_404(Todos, id=id, user_id=request.user.id)
 
     if request.method == 'POST':
         form = TodoForm(request.POST)
