@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Notespad</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Libre+Franklin:ital,wght@1,500&display=swap"
+    rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+{% load static %}
+
+<body>
+    <header>
+        <nav class="p-8">
+            <div class="flex justify-between">
+                <p class="logo text-4xl">Notespad</p>
+                <div>
+                    <a class="mr-2 p-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:login' %}">Login</a>
+                    <a class="p-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:signup' %}">Signup</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="flex flex-wrap md:flex-nowrap items-center">
+            <p class="text-xl p-10 flex-1 sm:text-4xl text-center description tracking-widest">The best way to save your data</p>
+            <img class="mx-auto sm:mx-0 sm:w-3/4 flex-initial" height="1000000" src="{% static 'images/mockup.png' %}"
+                alt="">
+        </div>
+    </main>
+</body>
+{% endblock content %}

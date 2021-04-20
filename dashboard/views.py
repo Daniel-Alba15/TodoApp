@@ -65,3 +65,7 @@ def edit_todo(request, id):
     }
 
     return render(request, 'edit.html', context)
+
+def home_view(request):
+
+    return render(request, 'home.html')

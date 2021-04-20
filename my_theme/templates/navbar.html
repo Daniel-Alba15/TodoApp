@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <nav class="w-full bg-gray-500 pb-5 mb-5">
-        <div class="flex items-end justify-between">
-            <img class="w-12 ml-5 text-gray-500" src="../static/images/user.svg" alt="">
-            <a class="mr-5 bg-gray-600 hover:bg-gray-800 text-white p-3 mt-6 rounded-md items-end" href="{% url 'users:logout' %}">Log out</a>
-        </div>
-    </nav>
+
+<nav class="w-full bg-gray-300 pb-5 mb-5">
+    <div class="flex items-end justify-between">
+        <img class="w-12 ml-8" src="../static/images/user.svg" alt="User's logo">
+        <a class="mr-8 bg-gray-600 hover:bg-gray-700 text-white p-2 mt-6 rounded-md text-sm sm:text-base" href="{% url 'users:logout' %}">Log
+            out</a>
+    </div>
+</nav>
 {% endblock content %}
