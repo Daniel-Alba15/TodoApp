@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['todos-appli.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['todos-appli.herokuapp.com', 'localhost', '.notespad.me']
 
 
 # Application definition
@@ -92,6 +92,7 @@ DATABASES = {
     }
 }
 
+#For Heroku deployment
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
