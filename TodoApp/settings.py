@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'TodoApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-#For Heroku deployment
+# For Heroku deployment
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
@@ -149,6 +149,6 @@ LOGOUT_REDIRECT_URL = LOGIN_URL
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
+# HTTPS for production, turn them to false to use in localhost
 SESSION_COOKIE_SECURE = True
-
 CSRF_COOKIE_SECURE = True

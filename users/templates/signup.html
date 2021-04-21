@@ -2,31 +2,57 @@
 
 {% block head %}
 <title>Signup</title>
+<link href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap" rel="stylesheet">
 {% endblock head %}
 
 {% block content %}
 
-<body class="fondo">
-    <form class="flex flex-col justify-center w-11/12 mx-auto" action="{% url 'users:signup' %}" method="POST">
-        {%csrf_token %}
-        <label class="p-3 text-white" for="email">Email:</label>
-        <input class="mx-auto w-11/12 rounded" type="email" id="email" name="email" placeholder="email" required>
-        <label class="p-3 text-white" for="name">Name:</label>
-        <input class="mx-auto w-11/12 rounded" type="text" id="name" name="name" placeholder="name" required>
-        <label class="p-3 text-white" for="lastname">Lastname:</label>
-        <input class="mx-auto w-11/12 rounded" type="text" id="lastname" name="lastname" placeholder="lastname"
-            required>
-        <label class="p-3 text-white" for="password">Password:</label>
-        <input class="mx-auto w-11/12 rounded" type="password" id="password" name="password" placeholder="password"
-            required minlength="4">
-        <label class="p-3 text-white" for="password_confirm">Password confirm:</label>
-        <input class="mx-auto w-11/12 rounded" type="password" id="password_confirm" name="password_confirm"
-            placeholder="password" required minlength="4">
-        <button class="bg-gray-600 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md" type="submit">Sign
-            up</button>
-        <span class="text-center mt-2 text-white">Already have an account?<a class="text-blue-700 hover:text-blue-900"
-                href="{% url 'users:login' %}"> Log in!</a></span>
-    </form>
-    </div>
+<body>
+
+    <header>
+        <nav class="p-8 border-b-4 fixed w-full">
+            <div>
+                <p class="logo text-2xl sm:text-4xl"><a href="{% url 'dashboard:home' %}">Notespad</a></p>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="pt-28">
+        {% if form.errors %}
+        <p>acas</p>
+        <div class="bg-red-600 text-center text-white p-5 w-2/4 mx-auto rounded-md">
+            {% for field in form %}
+            {% for error in field.errors %}
+            <p class="">{{ error }}</p>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+        <form class="flex flex-col justify-center w-11/12 mx-auto" action="{% url 'users:signup' %}" method="POST">
+            {%csrf_token %}
+            <label class="p-3" for="email">Email:</label>
+            <input class="mx-auto w-11/12 rounded" type="email" id="email" name="email" placeholder="email" required>
+            <label class="p-3" for="name">Name:</label>
+            <input class="mx-auto w-11/12 rounded" type="text" id="name" name="name" placeholder="name" required>
+            <label class="p-3" for="lastname">Lastname:</label>
+            <input class="mx-auto w-11/12 rounded" type="text" id="lastname" name="lastname" placeholder="lastname"
+                required>
+            <label class="p-3" for="password">Password:</label>
+            <input class="mx-auto w-11/12 rounded" type="password" id="password" name="password" placeholder="password"
+                required minlength="4">
+            <label class="p-3" for="password_confirm">Password confirm:</label>
+            <input class="mx-auto w-11/12 rounded" type="password" id="password_confirm" name="password_confirm"
+                placeholder="password" required minlength="4">
+            <button class="bg-gray-600 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md"
+                type="submit">Sign
+                up</button>
+            <span class="text-center mt-2">Already have an account?<a class="text-blue-700 hover:text-blue-900 pb-6"
+                    href="{% url 'users:login' %}"> Log in!</a></span>
+        </form>
+        </div>
+    </main>
 </body>
 {% endblock content %}

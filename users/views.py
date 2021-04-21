@@ -1,5 +1,7 @@
+from django.http.response import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import redirect, render
+from django.contrib import messages
+from django.shortcuts import redirect, render, reverse
 from .forms import UserForm
 
 
@@ -15,6 +17,10 @@ def signup_view(request):
         if form.is_valid():
             form.save()
             return redirect('users:login')
+        # else:
+        #     messages.error(request, message=form)
+        #     return HttpResponseRedirect(reverse('users:signup'))
+        #     return render(request, 'signup.html', {'form': form})
 
     return render(request, 'signup.html', {'form': form})
 
@@ -34,12 +40,14 @@ def login_view(request):
 
             return redirect('dashboard:dashboard')
         else:
-            return render(request, 'login.html', {'error': 'Invalid user or password'})
+            messages.error(request=request,
+                           message='Invalid user or password!')
+            return HttpResponseRedirect(reverse('users:login'))
 
     return render(request, 'login.html', {})
 
 
 def logout_view(request):
     logout(request)
-    
+
     return redirect('dashboard:home')
