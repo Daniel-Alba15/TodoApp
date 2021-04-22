@@ -372,4 +372,6 @@ pip-selfcheck.json
 !.vscode/extensions.json
 *.code-workspace
 
+runserver.sh
+
 # End of https://www.toptal.com/developers/gitignore/api/python,vscode,django,virtualenv,node

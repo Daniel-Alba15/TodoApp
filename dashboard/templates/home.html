@@ -13,12 +13,12 @@
 
 <body class="bg-gray-100">
     <header>
-        <nav class="p-8 border-b-4 border-solid border-gray-300 bg-gray-200">
+        <nav class="p-3 sm:p-8 border-b-4 border-solid border-gray-300 bg-gray-200">
             <div class="flex justify-between items-center">
                 <p class="logo text-2xl sm:text-4xl">Notespad</p>
                 <div>
-                    <a class="mr-2 p-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:login' %}">Login</a>
-                    <a class="p-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:signup' %}">Signup</a>
+                    <a class="p-1 sm:p-2 sm:mr-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:login' %}">Login</a>
+                    <a class="p-1 sm:p-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:signup' %}">Signup</a>
                 </div>
 
             </div>
@@ -29,7 +29,7 @@
         <div class="flex flex-wrap md:flex-nowrap items-center">
             <p class="text-xl p-10 flex-1 sm:text-3xl text-center description tracking-widest">The best way to organize
                 your notes</p>
-            <img class="mx-auto  sm:w-3/5 flex-initial" src="{% static 'images/mockup.png' %}" alt="">
+            <img class="mx-auto sm:w-3/5 flex-initial" src="{% static 'images/mockup.png' %}" width="600px" height="500px" alt="Mockup">
         </div>
     </main>
 </body>

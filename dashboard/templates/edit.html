@@ -10,15 +10,15 @@
     <form class="flex flex-col justify-center w-11/12 mx-auto mt-6" action="{% url 'dashboard:edit' todo.id %}"
         method="POST">{% csrf_token %}
         <input type="hidden" value="{{ user }}" name="user_id">
-        <input class="mb-3" name="title" type="text" maxlength="100" placeholder="title" value="{{ todo.title }}"
+        <input class="mb-3 p-3" name="title" type="text" maxlength="100" placeholder="title" value="{{ todo.title }}"
             required>
         {% if todo.description %}
-        <textarea name="description" cols="30" rows="10" placeholder="description">{{ todo.description }}</textarea>
+        <textarea class="p-3" name="description" cols="30" rows="10" placeholder="description">{{ todo.description }}</textarea>
         {% else %}
-        <textarea name="description" cols="30" rows="10" placeholder="description"></textarea>
+        <textarea class="p-3" name="description" cols="30" rows="10" placeholder="description"></textarea>
         {% endif %}
-        <div>
-            <label for="is_done">Is done?</label>
+        <div class="items-end">
+            <label class="mt-20" for="is_done">Is done?</label>
             {% if not todo.is_done %}
             <input type="checkbox" id="is_done" name="is_done">
             {% else %}

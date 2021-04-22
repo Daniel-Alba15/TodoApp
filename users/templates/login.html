@@ -13,7 +13,7 @@
 
 <body class="bg-gray-100">
     <header>
-        <nav class="p-8 fixed w-full border-b-4 border-solid border-gray-300 bg-gray-200">
+        <nav class="p-3 sm:p-8 fixed w-full border-b-4 border-solid border-gray-300 bg-gray-200">
             <div>
                 <p class="logo text-2xl sm:text-4xl"><a href="{% url 'dashboard:home' %}">Notespad</a></p>
             </div>
@@ -27,9 +27,9 @@
             <p class="bg-red-600 text-center text-white p-5 w-2/4 mx-auto rounded-md">{{ message }}</p>
             {% endfor %}
             {% endif %}
-            <form class=" p-10 w-11/12 sm:w-5/12" action="{% url 'users:login' %}" method="POST">{% csrf_token %}
-                <input class="block mx-auto w-11/12 rounded" type="email" name="email" placeholder="email">
-                <input class="block mx-auto w-11/12 my-2 rounded" type="password" name="password"
+            <form class="p-10 w-11/12 sm:w-5/12" action="{% url 'users:login' %}" method="POST">{% csrf_token %}
+                <input class="p-3 block mx-auto w-11/12 rounded border-2 border-gray-400" type="email" name="email" placeholder="email">
+                <input class="p-3 block mx-auto w-11/12 my-2 border-2 border-gray-400 rounded" type="password" name="password"
                     placeholder="password">
                 <button class="bg-gray-600 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md"
                     type="submit">Login</button>
