@@ -14,9 +14,9 @@
             <p class="text-2xl mt-4">{{ todo.description }}</p>
             <p class="mt-5">{{ todo.created }}</p>
             <div class="mx-auto">
-                <button class="bg-green-600 hover:bg-green-800 text-white mr-3 p-3 mt-6 rounded-md"
+                <button class="bg-green-600 hover:bg-green-800 form-btn mr-3"
                     type="submit">Delete</button>
-                <a class="inline-block bg-red-600 hover:bg-red-800 text-white p-3 mt-6 rounded-md mx-auto"
+                <a class="inline-block bg-red-600 hover:bg-red-800 form-btn"
                     href="{% url 'dashboard:dashboard' %}">Cancel</a>
             </div>
         </div>

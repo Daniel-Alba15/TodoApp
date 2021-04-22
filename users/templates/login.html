@@ -13,26 +13,26 @@
 
 <body class="bg-gray-100">
     <header>
-        <nav class="p-3 sm:p-8 fixed w-full border-b-4 border-solid border-gray-300 bg-gray-200">
+        <nav class="navbar">
             <div>
-                <p class="logo text-2xl sm:text-4xl"><a href="{% url 'dashboard:home' %}">Notespad</a></p>
+                <p class="logo logo-font"><a href="{% url 'dashboard:home' %}">Notespad</a></p>
             </div>
         </nav>
     </header>
 
     <main>
-        <div class=" flex justify-center items-center w-full h-screen flex-col">
+        <div class=" flex justify-center items-center w-full mt-9 flex-col">
+
             {% if messages %}
             {% for message in messages %}
             <p class="bg-red-600 text-center text-white p-5 w-2/4 mx-auto rounded-md">{{ message }}</p>
             {% endfor %}
             {% endif %}
+
             <form class="p-10 w-11/12 sm:w-5/12" action="{% url 'users:login' %}" method="POST">{% csrf_token %}
-                <input class="p-3 block mx-auto w-11/12 rounded border-2 border-gray-400" type="email" name="email" placeholder="email">
-                <input class="p-3 block mx-auto w-11/12 my-2 border-2 border-gray-400 rounded" type="password" name="password"
-                    placeholder="password">
-                <button class="bg-gray-600 hover:bg-gray-800 text-white block mx-auto p-3 mt-6 rounded-md"
-                    type="submit">Login</button>
+                <input class="input-field" type="email" name="email" placeholder="email">
+                <input class="input-field my-2" type="password" name="password" placeholder="password">
+                <button class="btn-generic" type="submit">Login</button>
                 <span class="block mx-auto mt-2 text-center">Do not have an account? <a
                         class="text-blue-700 hover:text-blue-900" href="{% url 'users:signup' %}">Sign up</a></span>
             </form>

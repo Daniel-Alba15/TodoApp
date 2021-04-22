@@ -13,7 +13,8 @@
         <input class="mb-3 p-3" name="title" type="text" maxlength="100" placeholder="title" value="{{ todo.title }}"
             required>
         {% if todo.description %}
-        <textarea class="p-3" name="description" cols="30" rows="10" placeholder="description">{{ todo.description }}</textarea>
+        <textarea class="p-3" name="description" cols="30" rows="10"
+            placeholder="description">{{ todo.description }}</textarea>
         {% else %}
         <textarea class="p-3" name="description" cols="30" rows="10" placeholder="description"></textarea>
         {% endif %}

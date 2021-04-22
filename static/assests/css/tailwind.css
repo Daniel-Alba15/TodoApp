@@ -1,5 +1,34 @@
 @tailwind base;
 @tailwind components;
+
+.input-field {
+    @apply p-3 block mx-auto w-11/12 rounded border-2 border-gray-400;
+}
+
+.btn-generic {
+    @apply bg-gray-600 text-white block mx-auto p-3 mt-6 rounded-md;
+}
+
+.btn-generic:hover {
+    @apply bg-gray-800;
+}
+
+.card {
+    @apply flex flex-wrap sm:flex-nowrap w-11/12 mx-auto items-center mb-5 p-3 text-white;
+}
+
+.form-btn {
+    @apply text-white mx-auto p-3 mt-6 rounded-md;
+}
+
+.navbar {
+    @apply p-3 w-full border-b-4 border-solid border-gray-300 bg-gray-200 sm:p-8;
+}
+
+.logo {
+    @apply text-2xl sm:text-4xl;
+}
+
 @tailwind utilities;
 
 .fondo-dash {
@@ -8,7 +37,7 @@
     font-family: "Roboto Mono", monospace;
 }
 
-.logo {
+.logo-font {
     font-family: 'Coda Caption', sans-serif;
 }
 

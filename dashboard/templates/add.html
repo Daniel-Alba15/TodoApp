@@ -11,11 +11,12 @@
         {%csrf_token %}
         <input type="hidden" value="{{ user }}" name="user_id">
         <input class="mb-3 p-2" name="title" type="text" maxlength="100" placeholder="title" required>
-        <textarea class="p-2" name="description" cols="30" rows="10" placeholder="description" maxlength="500"></textarea>
+        <textarea class="p-2" name="description" cols="30" rows="10" placeholder="description"
+            maxlength="500"></textarea>
         <div class="mx-auto">
-            <button class="bg-green-600 hover:bg-gray-800 text-white  mx-auto p-3 mt-6 rounded-md"
+            <button class="form-btn bg-green-600 hover:bg-green-800"
                 type="submit">Add</button>
-            <a class="inline-block bg-red-600 hover:bg-gray-800 text-white p-3 mt-6 rounded-md mx-auto"
+            <a class="inline-block bg-red-600 hover:bg-red-800 form-btn"
                 href="{% url 'dashboard:dashboard' %}">Cancel</a>
         </div>
     </form>
