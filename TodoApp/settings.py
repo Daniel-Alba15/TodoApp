@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'dashboard',
 ]
 
-TAILWIND_APP_NAME = 'my_theme'
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,7 +54,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
-
 ]
 
 ROOT_URLCONF = 'TodoApp.urls'
