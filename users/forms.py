@@ -12,8 +12,6 @@ class UserForm(forms.Form):
 
     def clean_email(self):
         email = super().clean().get('email')
-        print(email)
-        print('aca')
         query = MyUser.objects.filter(email=email)
 
         if query:

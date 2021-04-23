@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.shortcuts import redirect, render, reverse
 from .forms import UserForm
+import requests
+from decouple import config
 
 
 def signup_view(request):
@@ -15,14 +17,32 @@ def signup_view(request):
         form = UserForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            return redirect('users:login')
-        # else:
-        #     messages.error(request, message=form)
-        #     return HttpResponseRedirect(reverse('users:signup'))
-        #     return render(request, 'signup.html', {'form': form})
 
-    return render(request, 'signup.html', {'form': form})
+            ''' Begin reCAPTCHA validation '''
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+                'secret': config('GOOGLE_RECAPTCHA_SECRET_KEY'),
+                'response': recaptcha_response
+            }
+            r = requests.post(
+                'https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
+            ''' End reCAPTCHA validation '''
+
+            if result['success']:
+                form.save()
+                return redirect('users:login')
+            else:
+                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+                return HttpResponseRedirect(reverse('users:signup'))
+        else:
+            return render(request, 'signup.html', {'form': form})
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'signup.html', context)
 
 
 def login_view(request):

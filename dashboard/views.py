@@ -44,7 +44,6 @@ def delete_todo(request, id):
 @login_required
 def edit_todo(request, id):
     form = TodoForm()
-    # todo = Todos.objects.get(id=id, user_id=request.user.id)
     todo = get_object_or_404(Todos, id=id, user_id=request.user.id)
 
     if request.method == 'POST':
