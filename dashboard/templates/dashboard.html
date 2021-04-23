@@ -2,6 +2,7 @@
 
 {% block head %}
 <title>Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.5/lazysizes.min.js"></script>
 {% endblock head %}
 
 {% block content %}
@@ -13,8 +14,8 @@
     {% load static %}
 
     <div class="bg-gray-300 right-3 bottom-5 fixed rounded-full border-2 border-gray-700">
-        <a class="block p-3 rounded-md" href="{% url 'dashboard:add' %}"><img class="w-9"
-            src="{% static 'images/plus-circle.svg' %}" alt=""></a>
+        <a class="block p-3 rounded-md" href="{% url 'dashboard:add' %}"><img class="lazyload w-9"
+            data-src="{% static 'images/plus-circle.svg' %}" alt=""></a>
     </div>
 
     {% if todos %}
@@ -30,22 +31,23 @@
         <p class="flex-1 sm:text-center">{{ todo.description }}</p>
 
         {% if todo.is_done %}
-        <p class="flex-1 sm:text-center">Done <img class="inline-block w-5 "
-            src="{% static 'images/check-circle.svg' %}" alt=""></p>
+        <p class="flex-1 sm:text-center">Done <img class="lazyload inline-block w-5 "
+            data-src="{% static 'images/check-circle.svg' %}" alt=""></p>
         {% else %}
-        <p class="flex-1 sm:text-center">Done <img class="inline-block w-5" src="{% static 'images/x-circle.svg' %}"
+        <p class="flex-1 sm:text-center">Done <img class="lazyload inline-block w-5" data-src="{% static 'images/x-circle.svg' %}"
             alt=""></p>
         {% endif %}
 
         <p class="flex-1">{{ todo.modified|timezone:"America/Bogota"|date:"d-m/G:i" }}</p>
         <div class="flex justify-between w-full sm:w-auto">
-            <a href="{% url 'dashboard:edit' todo.id %}"><img class="w-7 sm:w-10 big:w-7 mr-2"
-                src="{% static 'images/edit.svg' %}" alt="Edit Todo"></a>
-            <a href="{% url 'dashboard:delete' todo.id %}"><img class="w-7 sm:w-10 big:w-7"
-                src="{% static 'images/trash.svg' %}" alt="Delete Todo"></a>
+            <a href="{% url 'dashboard:edit' todo.id %}"><img class="lazyload w-7 sm:w-10 big:w-7 mr-2"
+                data-src="{% static 'images/edit.svg' %}" alt="Edit Todo"></a>
+            <a href="{% url 'dashboard:delete' todo.id %}"><img class="lazyload w-7 sm:w-10 big:w-7"
+                data-src="{% static 'images/trash.svg' %}" alt="Delete Todo"></a>
         </div>
     </div>
     {% endfor %}
     {% endif %}
 </body>
+
 {% endblock content %}

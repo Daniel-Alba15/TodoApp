@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Notespad</title>
+<title>Notespad - organize your notes</title>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link
     href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Libre+Franklin:ital,wght@1,500&display=swap"
     rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"
+    integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ=="
+    crossorigin="anonymous"></script>
 {% endblock head %}
 
 {% block content %}
@@ -29,8 +32,8 @@
         <div class="flex flex-wrap md:flex-nowrap items-center">
             <p class="text-xl p-10 flex-1 sm:text-3xl text-center description tracking-widest">The best way to organize
                 your notes</p>
-            <img class="mx-auto sm:w-3/5 flex-initial" src="{% static 'images/mockup.png' %}" width="600px"
-                height="500px" alt="Mockup">
+            <img class="lazyload mx-auto sm:w-3/5 flex-initial" data-src="{% static 'images/mockup.png' %}"
+                width="600px" height="500px" alt="Mockup">
         </div>
     </main>
 </body>
