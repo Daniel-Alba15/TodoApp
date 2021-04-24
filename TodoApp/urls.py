@@ -23,3 +23,6 @@ urlpatterns = [
     path('', include(('users.urls', 'users'), namespace='users')),
     path('', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'users.views.error_404'
+
