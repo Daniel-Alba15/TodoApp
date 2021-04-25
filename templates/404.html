@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}
-<title>Not found</title>
-{% endblock title %}
+{% block head %}
+<title>Not here</title>
+{% endblock head %}
 
 {% block content %}
 {% load static %}
@@ -12,7 +12,7 @@
         <img class="mt-10 sm:mt-0 sm:w-7/12 mx-auto" height="1500" src="{% static 'images/404.svg' %}"
             alt="">
         <p class="mx-auto sm:mb-5 sm:text-xl text-center text-gray-800">Looks like there is nothing to see here but the Vampire King,
-            return to the <a class="text-blue-800 hover:text-blue-900" href="{% url 'dashboard:home' %}">home page</a>!
+            return to the <a class="text-blue-700 hover:text-blue-900" href="{% url 'dashboard:home' %}">home page</a>!
         </p>
     </div>
 </body>
