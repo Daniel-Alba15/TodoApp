@@ -51,9 +51,9 @@ def edit_todo(request, id):
 
         if form.is_valid():
             data = form.cleaned_data
-            todo.title = data['title']
-            todo.description = data['description']
-            todo.is_done = data['is_done']
+            todo.title = data.get('title')
+            todo.description = data.get('description')
+            todo.is_done = data.get('is_done')
             todo.save()
 
             return redirect('dashboard:dashboard')

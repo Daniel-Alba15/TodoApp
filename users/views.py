@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
 from django.shortcuts import redirect, render, reverse
-from .forms import UserForm
+from django.urls.base import reverse_lazy
+from .forms import UserForm, Password
 import requests
 from decouple import config
 
@@ -76,3 +78,30 @@ def logout_view(request):
 def error_404(request, exception):
 
     return render(request, '404.html')
+
+
+@login_required
+def detail_view(request):
+    user = request.user
+    form = Password(user=user)
+
+    context = {
+        'form': form,
+        'user': user
+    }
+
+    if request.method == 'POST':
+        form = Password(data=request.POST, user=user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Password changed succesfully!')
+        else:
+            for field in form:
+                for error in field.errors:
+                    messages.add_message(request=request, level=messages.ERROR, message=error)
+        
+        return HttpResponseRedirect(reverse('users:detail'))
+
+    return render(request, 'detail.html', context)

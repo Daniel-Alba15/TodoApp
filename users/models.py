@@ -37,6 +37,9 @@ class MyUser(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name', 'lastname']
 
+    def get_full_name(self):
+        return '{} {}'.format(self.name, self.lastname)
+
     def __str__(self):
         return self.email
 

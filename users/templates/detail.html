@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ user.get_full_name }}</title>
+{% endblock head %}
+
+
+{% block content %}
+
+<body class="fondo-dash">
+    {% include 'navbar.html' %}
+    {% load tz %}
+
+    <div class="btn-generic inline-block rounded-md" style="margin-left: 10px;">
+        <a href="{% url 'dashboard:dashboard' %}">Go back to dashboard</a>
+    </div>
+
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <p class="bg-green-600 text-center text-white p-5 w-2/4 mx-auto rounded-md">{{ message }}</p>
+    {% else %}
+    <p class="bg-red-600 text-center text-white mt-2 p-5 w-2/4 mx-auto rounded-md">{{ message }}</p>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    <main>
+        <div class="text-center">
+            <h1 class="w-11/12 sm:w-2/4 mx-auto" style="border-bottom: solid;">User information</h1>
+
+            <label class="text-2xl font-bold" for="name">Name:</label>
+            <p class="text-xl mb-3" id="name">{{ user.name }}</p>
+            <label class="text-2xl font-bold bg-green-900" for="lastname">Lastname:</label>
+            <p class="text-xl mb-3" id="lastname">{{ user.lastname }}</p>
+            <label class="text-2xl font-bold" for="email">Email:</label>
+            <p class="text-xl mb-3" id="email">{{ user.email }}</p>
+            <label class="text-2xl font-bold" for="last_login">Last login:</label>
+            <p class="text-xl" id="last_login">{{ user.last_login|timezone:"America/Bogota"|date:"d-m/G:i" }}</p>
+        </div>
+
+        <div class="text-center mt-5">
+            <h1 class="w-11/12 sm:w-2/4 mx-auto" style="border-bottom: solid;">Change your password</h1>
+            <form class="flex flex-col items-center" action="{% url 'users:detail' %}" method="POST">{% csrf_token %}
+                <label class="text-xl" for="old_password">Old password:</label>
+                <input class="w-2/4 my-2 p-2 rounded-md" type="password" name="old_password" id="old_password"
+                    placeholder="old password" required>
+                <label class="text-xl" for="new_password1">New password:</label>
+                <input class="w-2/4 my-2 p-2 rounded-md" type="password" id="new_password1" name="new_password1"
+                    placeholder="new password" minlength="5" required>
+                <label class="text-xl" for="new_password2">New password confirmation:</label>
+                <input class="w-2/4 my-2 p-2 rounded-md" type="password" id="new_password2" name="new_password2"
+                    placeholder="new password" minlength="5" required>
+                <button class="btn-generic mb-5 bg-green-600 hover:bg-green-800" type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+{% endblock content %}

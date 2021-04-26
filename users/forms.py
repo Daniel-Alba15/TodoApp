@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import PasswordChangeForm
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import MyUser
@@ -34,3 +35,25 @@ class UserForm(forms.Form):
         data.pop('password_confirm')
         user = MyUser.objects.create_user(**data)
         user.save()
+
+
+class Password(PasswordChangeForm):
+    def clean_new_password1(self):
+        password1 = self.cleaned_data.get('new_password1')
+        if len(password1) < 4:
+                raise ValidationError(
+                    self.add_error('new_password1', 'Password too short!'),
+                )
+        return password1
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+
+        if password1 and password2:
+            if password1 != password2:
+                raise ValidationError(
+                    self.error_messages['password_mismatch'],
+                    code='password_mismatch',
+                )
+        return password2

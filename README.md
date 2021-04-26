@@ -2,11 +2,11 @@
 
 This is a ToDo Django project that uses TailwindCSS, it's runing on [Heroku](https://heroku.com) and using Postgres as database for production.
 
-![Repository Banner](static/images/mockup.png)
+![Repository Banner](dashboard/static/images/mockup.png)
 
 ## Installation
 
-Create a virtual enviorment and execute:
+Create a virtual environment and execute:
 
 ```bash
 pip install requeriments.txt
@@ -14,7 +14,7 @@ pip install requeriments.txt
 
 ## Usage
 
-First don't forget to create an ```.env``` file to setup your secret key, then do:
+First don't forget to create an ```.env``` file to setup your secret key and other important variables, then do:
 
 ```python
 python manage.py migrate

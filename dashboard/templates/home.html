@@ -23,7 +23,6 @@
                     <a class="p-1 sm:p-2 sm:mr-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:login' %}">Login</a>
                     <a class="p-1 sm:p-2 rounded-2xl hover:bg-gray-300" href="{% url 'users:signup' %}">Signup</a>
                 </div>
-
             </div>
         </nav>
     </header>
@@ -31,10 +30,14 @@
     <main>
         <div class="flex flex-wrap md:flex-nowrap items-center">
             <p class="text-xl p-10 flex-1 sm:text-3xl text-center description tracking-widest">The best way to organize
-                your notes</p>
+                your tasks</p>
             <img class="lazyload mx-auto sm:w-3/5 flex-initial" data-src="{% static 'images/mockup.png' %}"
                 width="600px" height="500px" alt="Mockup">
         </div>
     </main>
+
+    <footer class="fixed bottom-2" style="margin-left: 20px;">
+        <p class="text-gray-800 text-center text-xl">You can see the source code of this project on <a class="text-blue-700 hover:text-blue-900" href="https://github.com/Daniel-Alba15/TodoApp" target="_blank">Github!</a></p>
+    </footer>
 </body>
 {% endblock content %}
